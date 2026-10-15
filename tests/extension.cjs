@@ -12,7 +12,7 @@ const root = path.resolve(__dirname, '..');
   try {
     await context.route('https://www.youtube.com/**', route => route.fulfill({contentType:'text/html', body:`<!doctype html><html><body>
       <ytd-unified-share-panel-renderer><input id="share-url" readonly value="https://youtu.be/video?si=original"></ytd-unified-share-panel-renderer>
-      <a id="video" href="/watch?v=video&si=track">����</a>
+      <a id="video" href="/watch?v=video&si=track">영상</a>
     </body></html>`}));
     const page = await context.newPage();
     await page.goto('https://www.youtube.com/watch?v=video');

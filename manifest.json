@@ -1,14 +1,14 @@
 {
   "manifest_version": 3,
-  "name": "��Ʃ�� ��ũ ����",
+  "name": "유튜브 링크 정리",
   "version": "1.1.0",
   "minimum_chrome_version": "111",
-  "description": "��Ʃ�� ���� â, ��ũ �̸�����, ���硤���� �ּҿ��� ���ʿ��� ���ڸ� �����մϴ�. ���� �ð��� �����մϴ�.",
+  "description": "유튜브 공유 창, 링크 미리보기, 복사·공유 주소에서 불필요한 인자를 제거합니다. 시작 시간은 유지합니다.",
   "permissions": ["activeTab", "clipboardWrite", "declarativeNetRequestWithHostAccess"],
   "host_permissions": ["*://*.youtube.com/*", "*://youtu.be/*", "*://*.youtube-nocookie.com/*"],
   "declarative_net_request": {"rule_resources": [{"id": "incoming_links", "enabled": true, "path": "rules/incoming.json"}]},
   "action": {
-    "default_title": "��Ʃ�� ��ũ ����",
+    "default_title": "유튜브 링크 정리",
     "default_popup": "popup.html",
     "default_icon": {"16": "icons/16.png", "32": "icons/32.png"}
   },

@@ -23,7 +23,7 @@ const root = path.resolve(__dirname, '..');
     const manager = await context.newPage();
     await manager.goto('chrome://extensions');
     const extensions = await manager.evaluate(() => new Promise(resolve => chrome.developerPrivate.getExtensionsInfo({includeDisabled:true, includeTerminated:true}, resolve)));
-    const extension = extensions.find(item => item.name === '��Ʃ�� ��ũ ����');
+    const extension = extensions.find(item => item.name === '유튜브 링크 정리');
     assert.ok(extension, 'unpacked extension must be registered');
     assert.deepEqual(extension.manifestErrors || [], [], JSON.stringify(extension.manifestErrors));
     await manager.goto(`chrome-extension://${extension.id}/popup.html`);
@@ -63,7 +63,7 @@ const root = path.resolve(__dirname, '..');
     // An actual click from a non-YouTube page also uses the network rule.
     await page.goto(`http://127.0.0.1:${port}/inbox`);
     await page.evaluate(port => {
-      const a = document.createElement('a'); a.id='received'; a.textContent='���� ��ũ';
+      const a = document.createElement('a'); a.id='received'; a.textContent='받은 링크';
       a.href=`http://youtu.be:${port}/received?si=received&t=42`; document.body.append(a);
     }, port);
     requests.length=0;

@@ -9,8 +9,8 @@ const root = path.resolve(__dirname, '..');
     const context = await browser.newContext();
     // Offline fixture uses YouTube's share-panel structure, no live website dependency.
     await context.route('https://www.youtube.com/**', route => route.fulfill({contentType: 'text/html', body: `<!doctype html><html><body>
-      <a id="video" href="/watch?v=video&si=track&t=107">����</a>
-      <ytd-unified-share-panel-renderer><input id="share-url" readonly value="https://youtu.be/video?si=original"><button id="time">���� �ð�</button></ytd-unified-share-panel-renderer>
+      <a id="video" href="/watch?v=video&si=track&t=107">영상</a>
+      <ytd-unified-share-panel-renderer><input id="share-url" readonly value="https://youtu.be/video?si=original"><button id="time">시작 시간</button></ytd-unified-share-panel-renderer>
       <input id="ordinary" value="https://youtu.be/video?si=keep">
       <script>document.getElementById('time').onclick = () => { document.getElementById('share-url').value='https://youtu.be/video?si=new&t=107'; };</script>
     </body></html>`}));
@@ -42,12 +42,12 @@ const root = path.resolve(__dirname, '..');
     await page.waitForFunction(() => document.querySelector('#late').value === 'https://youtu.be/late?t=42');
     await page.evaluate(async () => {
       await navigator.clipboard.writeText('https://youtu.be/video?si=track&t=107');
-      await navigator.share({title:'����', url:'https://youtu.be/video?si=track&t=107', text:'����: https://youtu.be/video?si=track'});
-      await navigator.clipboard.write([new ClipboardItem({'text/plain': new Blob(['https://youtu.be/video?si=track&t=107'], {type:'text/plain'}), 'text/html': new Blob(['<b><a href="https://youtu.be/video?si=track&t=107">����</a></b>'], {type:'text/html'})})]);
+      await navigator.share({title:'영상', url:'https://youtu.be/video?si=track&t=107', text:'보기: https://youtu.be/video?si=track'});
+      await navigator.clipboard.write([new ClipboardItem({'text/plain': new Blob(['https://youtu.be/video?si=track&t=107'], {type:'text/plain'}), 'text/html': new Blob(['<b><a href="https://youtu.be/video?si=track&t=107">영상</a></b>'], {type:'text/html'})})]);
     });
     assert.equal(await page.evaluate(() => captured.text), 'https://youtu.be/video?t=107');
     assert.equal(await page.evaluate(() => captured.share.url), 'https://youtu.be/video?t=107');
-    assert.equal(await page.evaluate(() => captured.share.text), '����: https://youtu.be/video');
+    assert.equal(await page.evaluate(() => captured.share.text), '보기: https://youtu.be/video');
     assert.equal(await page.evaluate(async () => (await captured.items[0].getType('text/plain')).text()), 'https://youtu.be/video?t=107');
     assert.match(await page.evaluate(async () => (await captured.items[0].getType('text/html')).text()), /href="https:\/\/youtu.be\/video\?t=107"/);
     const copy = await page.evaluate(() => {
@@ -94,7 +94,7 @@ const root = path.resolve(__dirname, '..');
     assert.equal(await popup.locator('#copy').isEnabled(), false);
     await popup.locator('#source').fill('https://youtu.be/example1234?si=tracking&t=107');
     await popup.locator('#copy').click();
-    await popup.waitForFunction(() => document.getElementById('status').textContent.includes('�����߾��'));
+    await popup.waitForFunction(() => document.getElementById('status').textContent.includes('복사했어요'));
     await popup.screenshot({path:path.join(root, 'preview.png')});
     console.log('PASS: popup current-tab URL, pasted URL, invalid URL, copy button. Screenshot: preview.png');
     await popupContext.close();

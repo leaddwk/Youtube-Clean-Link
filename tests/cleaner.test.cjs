@@ -29,8 +29,8 @@ for (const [name, input, output, base] of cases) test(name, () => {
   assert.equal(cleanUrl(output, base), output, 'must be idempotent');
 });
 test('message with multiple links and punctuation', () => {
-  assert.equal(cleanText('���� (https://youtu.be/x?si=a&t=107). ���� https://www.youtube.com/watch?v=y&si=b!'),
-    '���� (https://youtu.be/x?t=107). ���� https://www.youtube.com/watch?v=y!');
+  assert.equal(cleanText('영상 (https://youtu.be/x?si=a&t=107). 다음 https://www.youtube.com/watch?v=y&si=b!'),
+    '영상 (https://youtu.be/x?t=107). 다음 https://www.youtube.com/watch?v=y!');
 });
 for (const [name, prefix, key] of [
   ['Facebook', 'https://www.facebook.com/sharer/sharer.php?', 'u'],

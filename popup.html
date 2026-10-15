@@ -3,19 +3,19 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>��Ʃ�� ��ũ ����</title>
+  <title>유튜브 링크 정리</title>
   <link rel="stylesheet" href="popup.css">
 </head>
 <body>
-  <header><img src="icons/48.png" width="36" height="36" alt=""><div><h1>��Ʃ�� ��ũ ����</h1><p>��ũ�� ª��, ���� �ð��� �״��.</p></div></header>
-  <div class="badge"><span></span>��Ʃ�꿡�� �ڵ����� �۵� ��</div>
-  <label for="source">������ ��ũ</label>
-  <textarea id="source" rows="3" spellcheck="false" placeholder="��Ʃ�� ��ũ�� �ٿ� ��������"></textarea>
-  <div class="result-head"><label for="result">������ ��ũ</label><span id="count"></span></div>
-  <textarea id="result" rows="3" readonly spellcheck="false" placeholder="������ �ּҰ� ���⿡ ǥ�õ˴ϴ�"></textarea>
-  <button id="copy" disabled>������ ��ũ ����</button>
+  <header><img src="icons/48.png" width="36" height="36" alt=""><div><h1>유튜브 링크 정리</h1><p>링크는 짧게, 시작 시간은 그대로.</p></div></header>
+  <div class="badge"><span></span>유튜브에서 자동으로 작동 중</div>
+  <label for="source">정리할 링크</label>
+  <textarea id="source" rows="3" spellcheck="false" placeholder="유튜브 링크를 붙여 넣으세요"></textarea>
+  <div class="result-head"><label for="result">정리된 링크</label><span id="count"></span></div>
+  <textarea id="result" rows="3" readonly spellcheck="false" placeholder="정리된 주소가 여기에 표시됩니다"></textarea>
+  <button id="copy" disabled>정리된 링크 복사</button>
   <p id="status" role="status" aria-live="polite"></p>
-  <footer>���� â���޽������Ҽ� ���� �ּҸ� �ڵ� �����մϴ�.<br>���� ��ũ�� ���� ���� �����ϰ�, ���� �ð��� �����մϴ�.</footer>
+  <footer>공유 창·메시지·소셜 공유 주소를 자동 정리합니다.<br>받은 링크도 열기 전에 정리하고, 시작 시간은 유지합니다.</footer>
   <script src="cleaner.js"></script>
   <script src="popup.js"></script>
 </body>
