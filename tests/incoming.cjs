@@ -2,7 +2,7 @@ const http = require('node:http');
 const path = require('node:path');
 const assert = require('node:assert/strict');
 const {chromium} = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
-const root = path.resolve(__dirname, '..');
+const root = process.env.EXTENSION_PATH || path.resolve(__dirname, '..');
 (async () => {
   const requests = [];
   const server = http.createServer((request, response) => {
@@ -23,7 +23,7 @@ const root = path.resolve(__dirname, '..');
     const manager = await context.newPage();
     await manager.goto('chrome://extensions');
     const extensions = await manager.evaluate(() => new Promise(resolve => chrome.developerPrivate.getExtensionsInfo({includeDisabled:true, includeTerminated:true}, resolve)));
-    const extension = extensions.find(item => item.name === '유튜브 링크 정리');
+    const extension = extensions.find(item => item.name === require('../manifest.json').name);
     assert.ok(extension, 'unpacked extension must be registered');
     assert.deepEqual(extension.manifestErrors || [], [], JSON.stringify(extension.manifestErrors));
     await manager.goto(`chrome-extension://${extension.id}/popup.html`);

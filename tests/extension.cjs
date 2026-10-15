@@ -1,7 +1,7 @@
 const path = require('node:path');
 const assert = require('node:assert/strict');
 const {chromium} = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
-const root = path.resolve(__dirname, '..');
+const root = process.env.EXTENSION_PATH || path.resolve(__dirname, '..');
 (async () => {
   const context = await chromium.launchPersistentContext('', {
     headless: true,

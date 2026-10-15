@@ -6,3 +6,4 @@ preview.png
 .env.*
 dist/
 _metadata/
+!releases/**/*.zip

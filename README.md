@@ -1,6 +1,16 @@
-# 유튜브 링크 정리
+# 클린 링크 for YouTube™
 
 유튜브 공유 창의 주소 입력칸, 링크 미리보기, 복사·공유 주소를 정리하고, 받은 유튜브 링크도 서버에 요청하기 전에 추적 인자를 제거하는 Chrome Manifest V3 확장입니다. 시작 시간은 유지합니다.
+
+## 1.1.1 — Chrome 웹 스토어 제출 준비
+
+- 스토어 업로드용 ZIP은 `manifest.json`이 최상위에 있으며 실행 파일만 포함합니다. 기존 폴더형 설치 ZIP도 별도로 생성합니다.
+- 독립적인 링크·체크 아이콘과 스토어용 스크린샷 2장, 작은 홍보 이미지를 제공합니다.
+- [제출 안내](store/SUBMIT.ko.md), [등록 문구](store/listing.ko.md), [권한·데이터 처리 입력 자료](store/privacy-answers.ko.md), [개인정보처리방침](PRIVACY.md)을 포함합니다.
+- 개인정보처리방침 공개 URL: https://github.com/leaddwk/Youtube-Clean-Link/blob/main/PRIVACY.md
+- 등록 자료를 준비한 상태이며 실제 웹 스토어 등록·심사 승인을 뜻하지 않습니다.
+
+완성된 파일: [스토어 업로드용 ZIP](releases/1.1.1/youtube-clean-link-1.1.1-webstore.zip) · [등록 자료 모음 ZIP](releases/1.1.1/youtube-clean-link-1.1.1-submission-kit.zip). GitHub 파일 화면의 **Download raw file**로 내려받으세요. 새 항목 업로드에는 `-webstore.zip`만 사용합니다.
 
 ## 1.1.0 변경 사항
 
@@ -61,4 +71,8 @@
 - `npm run test:extension`: 임시 브라우저에 확장을 실제 로드하여 manifest 자동 주입과 공유 창 주소 정리를 검증합니다.
 - `npm run test:incoming`: 실제 확장의 네트워크 규칙을 사용하고 로컬 HTTP 서버에 도착한 URL을 검사하여 원래의 추적 인자가 서버에 전송되지 않았는지 검증합니다. HTTPS의 일반 유튜브·임베드 URL은 브라우저의 규칙 일치 API로 추가 확인합니다.
 - 검증 결과: URL·공유 데이터·규칙 관련 31개 테스트와 위 브라우저 검증 통과. 실제 유튜브 서비스 및 외부 메시지 앱의 전송 완료까지 수동 검증한 것은 아닙니다.
-- 설치용 ZIP 생성: Python 3에서 `python scripts/package.py`. 결과는 `dist/`에 생성됩니다.
+- ZIP 생성: Python 3에서 `python scripts/package.py`. `dist/`에 수동 설치용·`-webstore.zip`(스토어 업로드용)·`-submission-kit.zip`(이미지/문구 모음)이 생성됩니다.
+- 스토어 규격 검사: `python scripts/validate_store.py`. 제출 ZIP의 루트 구조, 파일, 권한, PNG 규격, 시간 인자 보존을 확인하며 ZIP을 브라우저 검사에 사용할 폴더로 풉니다.
+- 등록 이미지 재생성: Sharp와 Playwright 모듈을 설치하고 필요하면 `SHARP_MODULE`, `PLAYWRIGHT_MODULE`, `BROWSER_EXECUTABLE` 경로를 지정합니다. `node scripts/store-assets.cjs --icons-only` → `python scripts/package.py` → ZIP 압축 해제 → `EXTENSION_PATH`를 압축 해제 폴더로 설정 → `node scripts/store-assets.cjs` → `python scripts/package.py` 순서입니다. 이미지에 외부 사진·Google 로고를 사용하지 않습니다.
+
+YouTube는 Google LLC의 상표입니다. 독립적으로 개발한 이 확장은 Google 또는 YouTube의 제작·후원·보증을 받지 않습니다.
