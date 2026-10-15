@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "��Ʃ�� ��ũ ����",
+  "version": "1.1.0",
+  "minimum_chrome_version": "111",
+  "description": "��Ʃ�� ���� â, ��ũ �̸�����, ���硤���� �ּҿ��� ���ʿ��� ���ڸ� �����մϴ�. ���� �ð��� �����մϴ�.",
+  "permissions": ["activeTab", "clipboardWrite", "declarativeNetRequestWithHostAccess"],
+  "host_permissions": ["*://*.youtube.com/*", "*://youtu.be/*", "*://*.youtube-nocookie.com/*"],
+  "declarative_net_request": {"rule_resources": [{"id": "incoming_links", "enabled": true, "path": "rules/incoming.json"}]},
+  "action": {
+    "default_title": "��Ʃ�� ��ũ ����",
+    "default_popup": "popup.html",
+    "default_icon": {"16": "icons/16.png", "32": "icons/32.png"}
+  },
+  "icons": {"16": "icons/16.png", "32": "icons/32.png", "48": "icons/48.png", "128": "icons/128.png"},
+  "content_scripts": [{
+    "matches": ["*://*.youtube.com/*", "*://youtu.be/*", "*://*.youtube-nocookie.com/*"],
+    "js": ["cleaner.js", "page.js"],
+    "run_at": "document_start",
+    "world": "MAIN",
+    "all_frames": true
+  }]
+}

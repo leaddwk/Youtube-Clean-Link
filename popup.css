@@ -1,0 +1,22 @@
+:root { color-scheme: dark; font-family: "Segoe UI", "Malgun Gothic", sans-serif; color: #eef2f6; background: #12151c; }
+* { box-sizing: border-box; }
+body { width: 370px; margin: 0; padding: 24px; }
+header { display: flex; align-items: center; gap: 12px; margin-bottom: 22px; }
+h1 { font-size: 18px; margin: 0 0 5px; letter-spacing: -.5px; }
+p { margin: 0; }
+header p { color: #9aa6b8; font-size: 12px; }
+.badge { display: flex; align-items: center; gap: 7px; background: #1b2926; color: #9ce3c2; font-size: 12px; padding: 10px 12px; border-radius: 8px; margin-bottom: 22px; }
+.badge span { width: 6px; height: 6px; border-radius: 50%; background: #6fdbac; }
+label { display: block; font-size: 12px; font-weight: 600; color: #c3ccda; margin-bottom: 8px; }
+textarea { display: block; width: 100%; border: 1px solid #353e4d; border-radius: 10px; background: #1b202b; padding: 12px; color: #f3f6fb; font: 13px/1.65 "Segoe UI", sans-serif; resize: none; overflow-wrap: anywhere; }
+textarea:focus { outline: 2px solid #92b8ff; outline-offset: 2px; }
+#result { color: #a9e2cb; background: #171f23; }
+.result-head { display: flex; justify-content: space-between; align-items: center; margin-top: 20px; }
+#count { color: #9aa6b8; font-size: 11px; margin-bottom: 8px; }
+button { border: 0; width: 100%; border-radius: 10px; background: #adccff; color: #112546; font: 700 14px "Segoe UI", "Malgun Gothic", sans-serif; padding: 14px; margin-top: 16px; cursor: pointer; }
+button:hover { background: #c6dcff; }
+button:disabled { background: #303847; color: #7f8da3; cursor: default; }
+button:focus-visible { outline: 2px solid white; outline-offset: 3px; }
+#status { min-height: 31px; padding-top: 10px; font-size: 12px; color: #b3d5ff; }
+footer { border-top: 1px solid #29313e; padding-top: 15px; color: #8c99ac; font-size: 11px; line-height: 1.8; }
+code { color: #c3d4ec; }

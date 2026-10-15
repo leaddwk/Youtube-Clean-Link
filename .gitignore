@@ -1,0 +1,8 @@
+node_modules/
+preview.png
+*.zip
+*.log
+.env
+.env.*
+dist/
+_metadata/
